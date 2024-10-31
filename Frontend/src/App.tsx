@@ -4,6 +4,7 @@ import { themeSettings } from "./theme";
 import { CssBaseline, ThemeProvider, Box } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "@/scenes/navbar";
+import Dashboard from "@/scenes/dashboard";
 
 const App = () => {
   const theme = useMemo(() => createTheme(themeSettings), []); // useMemo is a hook that memorizes the value of the themeSettings object
@@ -20,7 +21,7 @@ const App = () => {
           <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
             <Navbar />
             <Routes>
-              <Route path="/" element={<div>Mekin Jemal</div>} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<div>Admin dashboeard</div>} />
             </Routes>
           </Box>
