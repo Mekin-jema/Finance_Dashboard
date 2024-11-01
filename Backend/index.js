@@ -6,6 +6,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import KPI from "./model/KPI.js";
+import Product from "./model/Product.js";
+import Transaction from "./model/Transaction.js";
+import { kpis } from "./data/data.js";
+import { transactions } from "./data/data.js";
+import { products } from "./data/data.js";
 
 // Confugurations
 dotenv.config();
@@ -25,6 +31,11 @@ const conn = mongoose
     app.listen(3000, (req, res) => {
       console.log("Server is running on port 3000");
     });
+    // ADD DATA ONE TIME ONLY OR AS NEEDED */
+    // await mongoose.connection.db.dropDatabase();
+    // KPI.insertMany(kpis);
+    // Product.insertMany(products);
+    // Transaction.insertMany(transactions);
     console.log(`Mongodb is connected on localhost} `);
   })
   .catch((error) => {

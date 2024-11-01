@@ -1,78 +1,80 @@
-import mongoose, { mongo, Schema } from "mongoose";
-
+import mongoose from "mongoose";
 import { loadType } from "mongoose-currency";
 
-const daySchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+loadType(mongoose);
+
+const daySchema = new Schema(
   {
     date: String,
     revenue: {
-      type: mongoose.Types.Currency,
-      Currency: "USD",
-      get: (v) => v / 100,
+      type: mongoose.Types.Currency, // why ?
+      currency: "USD", //why?
+      get: (v) => v / 100, //why?
     },
     expenses: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
   },
   { toJSON: { getters: true } }
 );
 
-const monthSchema = new mongoose.Schema(
+const monthSchema = new Schema(
   {
     month: String,
     revenue: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
     expenses: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
     operationalExpenses: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
-    nonOperatinalExpenses: {
+    nonOperationalExpenses: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
   },
   { toJSON: { getters: true } }
 );
 
-const KPISchema = new mongoose.Schema(
+const KPISchema = new Schema(
   {
     totalProfit: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
     totalRevenue: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
-    totalExpense: {
+    totalExpenses: {
       type: mongoose.Types.Currency,
-      Currency: "USD",
+      currency: "USD",
       get: (v) => v / 100,
     },
     expensesByCategory: {
       type: Map,
       of: {
         type: mongoose.Types.Currency,
-        Currency: "USD",
+        currency: "USD",
         get: (v) => v / 100,
       },
     },
     monthlyData: [monthSchema],
-    daylySchema: [daySchema],
+    dailyData: [daySchema],
   },
   { timestamps: true, toJSON: { getters: true } }
 );
