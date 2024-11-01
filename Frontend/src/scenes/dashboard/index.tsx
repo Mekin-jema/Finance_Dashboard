@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import Row1 from "./Row1";
 import Row3 from "./Row3";
 import Row2 from "./Row2";
-const gridTemplateLargeScreen = `
+const gridTemplateLargeScreens = `
 "a b c" 
 "a b c"
 "a b c"
@@ -56,7 +56,7 @@ function index() {
           ? {
               gridTemplateColumns: "repeat(3,minmax(370px,1fr))",
               gridTemplateRows: "repeat(10,minmax(60px,1fr))",
-              gridTemplateAreas: gridTemplateLargeScreen,
+              gridTemplateAreas: gridTemplateLargeScreens,
             }
           : {
               gridAutoColumns: "1fr",
