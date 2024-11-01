@@ -12,6 +12,7 @@ import Transaction from "./model/Transaction.js";
 import { kpis } from "./data/data.js";
 import { transactions } from "./data/data.js";
 import { products } from "./data/data.js";
+import productRoutes from "./routes/product.js";
 
 // Confugurations
 dotenv.config();
@@ -26,6 +27,7 @@ app.use(cors());
 
 //routes
 app.use("/kpi", kpiRoutes);
+app.use("/product", productRoutes);
 const conn = mongoose
   .connect("mongodb://127.0.0.1:27017/Dashboard")
   .then(async () => {

@@ -9,8 +9,8 @@ export interface MonthlyData {
   month: string;
   revenue: number;
   expenses: number;
-  nonOperatingExpenses: number;
-  operatingExpenses: number;
+  nonOperationalExpenses: number;
+  operationalExpenses: number;
 }
 export interface DailyData {
   id: string;
@@ -29,4 +29,17 @@ export interface GetKpisResponse {
   totalexpense: ExpensesCategory;
   monthlyData: Array<MonthlyData>;
   dailyData: Array<DailyData>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface GetProductResponse {
+  id: string;
+  _id: string;
+  __v: number;
+  price: number;
+  expense: number;
+  transactions: Array<string>;
+  createdAt: string;
+  updatedAt: string;
 }
